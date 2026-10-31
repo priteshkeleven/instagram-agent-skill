@@ -15,6 +15,20 @@ storefront people browse. It is a **decision screen**, arrived at from one
 reel, and it gets about three seconds to answer one question: is there more of
 that here, and is it for me.
 
+## Account
+
+This pack can run several Instagram accounts, each in its own folder at
+`~/.claude/instagram/<account>/`. Work out which one this request is for
+before anything else: the account named in the request, otherwise the name in
+`~/.claude/instagram/active`, otherwise the only account folder there is.
+If none of those settles it, ask. Never guess, and never read one account's
+files for another. If there is no account folder yet, set one up with
+`/ig-account` first.
+
+Reads `account.md` for what the account sells and to whom.
+
+Put the account on the first line of the output: `ACCOUNT  pullsy  (@handle)`.
+
 ## Input
 
 Ask the user to paste or screenshot: the name field, the handle, the bio, what

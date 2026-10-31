@@ -12,20 +12,35 @@ description: >-
 The control room. Everything else in this pack executes; this decides what gets
 executed. Run it once a week, on the same day.
 
+## Account
+
+This pack can run several Instagram accounts, each in its own folder at
+`~/.claude/instagram/<account>/`. Work out which one this request is for
+before anything else: the account named in the request, otherwise the name in
+`~/.claude/instagram/active`, otherwise the only account folder there is.
+If none of those settles it, ask. Never guess, and never read one account's
+files for another. If there is no account folder yet, set one up with
+`/ig-account` first.
+
+Reads `account.md`, `voice.md`, `swipe.md` and `log.md`. Writes `plan.md`.
+
+Put the account on the first line of the output: `ACCOUNT  pullsy  (@handle)`.
+
 ## Input
 
-If `~/.claude/instagram/voice.md`, `swipe.md` and `log.md` exist, read them.
-The swipe file is the user's own evidence from `/ig-viral` about which formulas
-are landing in their niche right now, and it outranks anything in this file.
-The log stops the plan repeating a theme from the last fortnight.
+Read the account's `account.md`, `voice.md`, `swipe.md` and `log.md`, whichever
+exist. The swipe file is the user's own evidence from `/ig-viral` about which
+formulas are landing in their niche right now, and it outranks anything in
+this file. The log stops the plan repeating a theme from the last fortnight.
 
-If they do not exist, ask for four things and write them down:
+`account.md` should already hold what the account sells and to whom, its three
+or four themes, its audience's timezone, and the ten accounts worth being
+visible to. Ask for whichever of those is missing and write the answers into
+`account.md`, not into the plan, so next week starts with them.
 
-1. What the user sells, and to whom.
-2. The three or four themes they want to be known for.
-3. What actually happened this week: a client call, a number, a mistake, a
-   thing they built, an argument they had. This is where posts come from.
-4. Ten accounts worth being visible to.
+Then ask, every week, for the one thing no file can hold: what actually
+happened this week. A client call, a number, a mistake, a thing they built, an
+argument they had. This is where posts come from.
 
 ## What to post
 
@@ -77,6 +92,7 @@ Hand the list to `/ig-comment`.
 ## Output
 
 ```
+ACCOUNT  pullsy  (@pullsy.app)
 WEEK OF SEP 15
 
 MON  engage only  (20 min, list below)
@@ -95,6 +111,6 @@ ENGAGE  (5 reach / 3 peers / 2 buyers)
 Say "write Tuesday" and I will draft it.
 ```
 
-Write the plan to `~/.claude/instagram/plan.md` so the other skills can read
+Write the plan to `~/.claude/instagram/<account>/plan.md` so the other skills can read
 it. Nothing is scheduled or posted anywhere. This is a plan and the user runs
 it.

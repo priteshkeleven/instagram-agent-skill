@@ -14,6 +14,20 @@ The only honest source of what works for an account is that account. Every
 rule in every Instagram guide, including the ones in this pack, is a prior.
 The user's own last 30 posts are the evidence.
 
+## Account
+
+This pack can run several Instagram accounts, each in its own folder at
+`~/.claude/instagram/<account>/`. Work out which one this request is for
+before anything else: the account named in the request, otherwise the name in
+`~/.claude/instagram/active`, otherwise the only account folder there is.
+If none of those settles it, ask. Never guess, and never read one account's
+files for another. If there is no account folder yet, set one up with
+`/ig-account` first.
+
+Reads `log.md` and `account.md`.
+
+Put the account on the first line of the output: `ACCOUNT  pullsy  (@handle)`.
+
 ## Input
 
 Ask for whichever the user has:
@@ -24,7 +38,7 @@ Ask for whichever the user has:
   screenshot is worth more than the rest combined.
 - Or just the posts and their view counts, which is enough for a first pass.
 
-Also read `~/.claude/instagram/log.md` if it exists, since it records which
+Also read `~/.claude/instagram/<account>/log.md` if it exists, since it records which
 hook formula each post used.
 
 ## What to actually measure

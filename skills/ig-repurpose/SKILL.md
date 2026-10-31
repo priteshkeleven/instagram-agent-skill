@@ -13,6 +13,20 @@ description: >-
 One good long asset contains four to six posts. Most people extract one and
 throw the rest away.
 
+## Account
+
+This pack can run several Instagram accounts, each in its own folder at
+`~/.claude/instagram/<account>/`. Work out which one this request is for
+before anything else: the account named in the request, otherwise the name in
+`~/.claude/instagram/active`, otherwise the only account folder there is.
+If none of those settles it, ask. Never guess, and never read one account's
+files for another. If there is no account folder yet, set one up with
+`/ig-account` first.
+
+Reads `voice.md`, and `account.md` for the themes.
+
+Put the account on the first line of the output: `ACCOUNT  pullsy  (@handle)`.
+
 ## Input
 
 A transcript, an article, a newsletter, a script, a call summary, a livestream.

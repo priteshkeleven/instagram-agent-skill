@@ -21,6 +21,20 @@ It prints the caption the way the feed prints it: the first 125 characters in a
 box, everything else behind the tap. Read that box before you read anything
 else you wrote.
 
+## Account
+
+This pack can run several Instagram accounts, each in its own folder at
+`~/.claude/instagram/<account>/`. Work out which one this request is for
+before anything else: the account named in the request, otherwise the name in
+`~/.claude/instagram/active`, otherwise the only account folder there is.
+If none of those settles it, ask. Never guess, and never read one account's
+files for another. If there is no account folder yet, set one up with
+`/ig-account` first.
+
+Reads `voice.md` for the keyword, the link and the words to avoid.
+
+Put the account on the first line of the output: `ACCOUNT  pullsy  (@handle)`.
+
 ## First, decide which job this caption has
 
 This is the decision that ruins captions when it is skipped.

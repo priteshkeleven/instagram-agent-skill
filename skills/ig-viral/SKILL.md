@@ -18,8 +18,22 @@ looks. Run it monthly, not daily. Formulas last a season.
 One tool lives in this folder and it runs:
 
 ```bash
-python3 swipe.py captured.tsv --out ~/.claude/instagram/swipe.md
+python3 swipe.py captured.tsv --out ~/.claude/instagram/<account>/swipe.md
 ```
+
+## Account
+
+This pack can run several Instagram accounts, each in its own folder at
+`~/.claude/instagram/<account>/`. Work out which one this request is for
+before anything else: the account named in the request, otherwise the name in
+`~/.claude/instagram/active`, otherwise the only account folder there is.
+If none of those settles it, ask. Never guess, and never read one account's
+files for another. If there is no account folder yet, set one up with
+`/ig-account` first.
+
+Reads `account.md` for the niche and follower count. Writes `swipe.md`.
+
+Put the account on the first line of the output: `ACCOUNT  pullsy  (@handle)`.
 
 ## The one idea that makes this worth doing
 
@@ -112,7 +126,7 @@ account	followers	median	views	hook
 ```
 
 ```bash
-python3 swipe.py captured.tsv --out ~/.claude/instagram/swipe.md
+python3 swipe.py captured.tsv --out ~/.claude/instagram/<account>/swipe.md
 ```
 
 It computes the outlier multiple, names the hook formula using the same 26
@@ -171,7 +185,7 @@ YOUR VERSION
   ...
 ```
 
-Write the swipe file to `~/.claude/instagram/swipe.md`. `/ig-reel` and
+Write the swipe file to `~/.claude/instagram/<account>/swipe.md`. `/ig-reel` and
 `/ig-plan` both read it, which is the point: after this runs once, the rest of
 the pack is working from the user's own evidence instead of from defaults.
 

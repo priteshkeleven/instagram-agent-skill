@@ -14,6 +14,20 @@ Instagram DMs are the only place on the platform where money actually changes
 hands, and they are also where most accounts burn the goodwill their content
 earned. The difference is entirely about who moved first.
 
+## Account
+
+This pack can run several Instagram accounts, each in its own folder at
+`~/.claude/instagram/<account>/`. Work out which one this request is for
+before anything else: the account named in the request, otherwise the name in
+`~/.claude/instagram/active`, otherwise the only account folder there is.
+If none of those settles it, ask. Never guess, and never read one account's
+files for another. If there is no account folder yet, set one up with
+`/ig-account` first.
+
+Reads `voice.md`, and `account.md` for what the account sells.
+
+Put the account on the first line of the output: `ACCOUNT  pullsy  (@handle)`.
+
 ## The three kinds of DM, and only three are worth writing
 
 **1. The reply to a hand raised.** They commented the keyword, answered the

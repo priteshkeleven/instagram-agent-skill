@@ -17,6 +17,20 @@ the first time, so slide two has to stand on its own as well.
 The format rewards one idea broken into steps. It punishes a caption cut into
 pieces.
 
+## Account
+
+This pack can run several Instagram accounts, each in its own folder at
+`~/.claude/instagram/<account>/`. Work out which one this request is for
+before anything else: the account named in the request, otherwise the name in
+`~/.claude/instagram/active`, otherwise the only account folder there is.
+If none of those settles it, ask. Never guess, and never read one account's
+files for another. If there is no account folder yet, set one up with
+`/ig-account` first.
+
+Reads `voice.md`.
+
+Put the account on the first line of the output: `ACCOUNT  pullsy  (@handle)`.
+
 ## When to use it instead of a Reel
 
 Use a carousel when the idea has **sequence and needs to be re-read**: steps, a

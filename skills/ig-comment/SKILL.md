@@ -18,6 +18,20 @@ A generic comment is worse than none. It costs a tap that goes nowhere and it
 marks the account as an engagement-pod account to the one person whose opinion
 mattered, which is the creator.
 
+## Account
+
+This pack can run several Instagram accounts, each in its own folder at
+`~/.claude/instagram/<account>/`. Work out which one this request is for
+before anything else: the account named in the request, otherwise the name in
+`~/.claude/instagram/active`, otherwise the only account folder there is.
+If none of those settles it, ask. Never guess, and never read one account's
+files for another. If there is no account folder yet, set one up with
+`/ig-account` first.
+
+Reads `voice.md`. Keeps the engagement note in `log.md`.
+
+Put the account on the first line of the output: `ACCOUNT  pullsy  (@handle)`.
+
 ## Input
 
 The user pastes the post or reel text, or a screenshot, with the account name.
@@ -82,7 +96,7 @@ Post the first. It concedes something and it has a number in it.
 
 For an engagement round, ask for the 5 to 10 posts as pasted text in one
 message, return one comment each in a single block, and keep a running note in
-`~/.claude/instagram/log.md` of who has been commented on this week.
+`~/.claude/instagram/<account>/log.md` of who has been commented on this week.
 Commenting on the same three accounts every day is visible and it looks like
 exactly what it is.
 

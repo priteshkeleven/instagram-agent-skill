@@ -22,7 +22,7 @@ see it.
 Paste this into Claude:
 
 ```
-https://github.com/Jakeschincariol/instagram-agent-skill
+https://github.com/priteshkeleven/instagram-agent-skill
 
 Install this skill, then confirm /ig-reel works.
 ```
@@ -30,15 +30,15 @@ Install this skill, then confirm /ig-reel works.
 Or do it yourself, in Claude Code:
 
 ```bash
-git clone https://github.com/Jakeschincariol/instagram-agent-skill.git
+git clone https://github.com/priteshkeleven/instagram-agent-skill.git
 cp -r instagram-agent-skill/skills/ig-* ~/.claude/skills/
 ```
 
 Or as a plugin:
 
 ```
-/plugin marketplace add Jakeschincariol/instagram-agent-skill
-/plugin install instagram-agent
+/plugin marketplace add priteshkeleven/instagram-agent-skill
+/plugin install instagram-agent@priteshkeleven-instagram-agent
 ```
 
 Project-local instead of global: copy the same folders into your repo's
@@ -46,11 +46,28 @@ Project-local instead of global: copy the same folders into your repo's
 of a chat and it runs as a mode. You lose the five Python tools, which is most
 of the point of `/ig-reel` and `/ig-human`, but the rest works.
 
-Then spend ten minutes on `templates/voice.md`. Copy it to
-`~/.claude/instagram/voice.md` and fill it in, or send Claude three of your own
+Then run `/ig-account` to set up your first account, and spend ten minutes on
+`templates/voice.md`. Copy it to
+`~/.claude/instagram/<account>/voice.md` and fill it in, or send Claude three of your own
 reels and say "write my voice.md from these". Every skill reads that file. It
 matters more here than on other platforms, because you have to say the words
 out loud.
+
+## Several accounts
+
+Each account gets its own folder, and nothing is shared between them:
+
+```
+~/.claude/instagram/
+  active          the account in use
+  pullsy/         account.md  voice.md  swipe.md  log.md  plan.md
+  personal/       account.md  voice.md  swipe.md  log.md  plan.md
+```
+
+Name the account in the request (`/ig-plan for personal`) or switch with
+`/ig-account use pullsy`. With one account you never have to name it. With
+several and none active, the skill asks rather than guessing, and every output
+starts with the account it was written for.
 
 ## The thirteen
 
@@ -68,6 +85,7 @@ out loud.
 | `/ig-reply` | The thread under your own post. Sorts into keyword / lead / substance / question / support / noise, then writes in that order. |
 | `/ig-dm` | The keyword delivery, the first message, the collab pitch, and the two follow-ups. Two. |
 | `/ig-repurpose` | One video, podcast or newsletter into a week of reels and carousels that each stand alone. |
+| `/ig-account` | Adds, lists and switches between your accounts. Each one gets its own voice, swipe file, log and plan. |
 | `/ig-audit` | Post-mortem on what you already posted. Ranks by outlier multiple and sends per reach, not views. |
 
 ## The five tools that actually run
@@ -199,7 +217,7 @@ After `humanize.py`, with the flagged structures still unrewritten:
 ### The swipe file
 
 ```bash
-python3 swipe.py captured.tsv --out ~/.claude/instagram/swipe.md
+python3 swipe.py captured.tsv --out ~/.claude/instagram/<account>/swipe.md
 ```
 
 Raw views are not evidence. A 2,000,000-follower account doing 400,000 views
@@ -323,10 +341,15 @@ skills/ig-human/humanize.py        the three cleaning passes
 skills/ig-human/detect.py          the five-check panel
 skills/ig-viral/swipe.py           outlier ranking and formula classification
 skills/ig-profile/rubric.json      the 100-point profile score
+skills/ig-account/SKILL.md         one folder per account, and how every skill picks one
+templates/account.md               who the account is, what it sells, themes, engage list
 templates/voice.md                 your voice profile. Fill this in first.
 ```
 
 ## Credit
+
+This is a fork. The multi-account support (`/ig-account` and the per-account
+folders) was added here; everything else is the original.
 
 Made by Jake Schincariol, [opusjake.ai](https://opusjake.ai).
 
